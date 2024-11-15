@@ -15,6 +15,10 @@ public class Empresa implements IEmpresa, Serializable {
         return clientes;
     }
 
+    public void setClientes(List<Cliente> clientes) {
+        this.clientes = clientes;
+    }
+
     public String getNombre() {
         return nombre;
     }

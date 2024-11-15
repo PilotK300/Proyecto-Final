@@ -66,6 +66,8 @@ public class Cliente {
         // Todo: Create logic for obtaining client list
         if (!usersFile.getFile().exists()) return null;
 
+        usersFile.getFromFile();
+
         return new ArrayList<Cliente>();
     }
 }
