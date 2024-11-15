@@ -67,7 +67,7 @@ public class TestConsola {
         System.out.print("""
                 
                 Ingresar clientes
-                \t1. Seleccionar archivo clientes                    
+                \t1. Seleccionar archivo clientes
                 \t0. Regresar al menú anterior
                 \t""");
 
@@ -84,7 +84,7 @@ public class TestConsola {
 
             OwnFile clientOwnFile = new OwnFile(clientFile);
 
-            controller.getClientList(clientOwnFile);
+            controller.loadClients(clientOwnFile);
         }
 
 
