@@ -14,12 +14,12 @@ public class Cliente {
     private String tipoId;
     private Cuenta cuenta;
 
-    public Cliente(String direccion, String identificacion, String nombre, String tipoid, Cuenta cuenta) {
+    public Cliente(String nombre, String tipoid, String identificacion, String direccion) {
         this.direccion = direccion;
         this.identificacion = identificacion;
         this.nombre = nombre;
         this.tipoId = tipoid;
-        this.cuenta = cuenta;
+//        this.cuenta = cuenta;
     }
 
     public String getDireccion() {
@@ -62,7 +62,7 @@ public class Cliente {
         this.cuenta = cuenta;
     }
 
-    public static List<Cliente> getClientsFromFileURI(OwnFile usersFile) {
+    public static ArrayList<Cliente> getClientsFromFileURI(OwnFile usersFile) {
         // Todo: Create logic for obtaining client list
         if (!usersFile.getFile().exists()) return null;
 

@@ -1,5 +1,13 @@
 package com.example.controlador;
 
 public class Utils {
-    private static long CONSECUTIVO;
+    private long CONSECUTIVO ;
+
+    public Utils(long consecutivo) {
+        this.CONSECUTIVO = consecutivo;
+    }
+
+    public long getCONSECUTIVO() {
+        return ++CONSECUTIVO;
+    }
 }

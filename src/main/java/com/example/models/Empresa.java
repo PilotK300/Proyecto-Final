@@ -3,20 +3,31 @@ package com.example.models;
 import com.example.models.cuenta.Cuenta;
 
 import java.io.Serializable;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Empresa implements IEmpresa, Serializable {
     private String nombre;
     private List<Cuenta> cuentas;
-    private List<Cliente> clientes;
+    private ArrayList<Cliente> clientes;
+
+    public Empresa() {
+        this.nombre = "Empresa";
+        this.clientes = new ArrayList<Cliente>();
+        this.cuentas = new ArrayList<Cuenta>();
+    }
 
     public List<Cliente> getClientes() {
         return clientes;
     }
 
-    public void setClientes(List<Cliente> clientes) {
+    public void setClientes(ArrayList<Cliente> clientes) {
         this.clientes = clientes;
+    }
+
+    public void addClient(Cliente client) {
+        this.clientes.add(client);
     }
 
     public String getNombre() {
@@ -29,6 +40,11 @@ public class Empresa implements IEmpresa, Serializable {
 
     public List<Cuenta> getCuentas() {
         return cuentas;
+    }
+
+    public void addAccount(Cuenta cuenta, Cliente cliente) {
+        this.cuentas.add(cuenta);
+        cliente.setCuenta(cuenta);
     }
 }
 

@@ -4,8 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="71ac968e-c946-4803-9da5-3e8b396802ce" name="Changes" comment="" />
-    <list id="7a354bc1-21bf-4fc4-8ca6-cd8cf5863c92" name="Changes by Dell" comment="" />
+    <list default="true" id="71ac968e-c946-4803-9da5-3e8b396802ce" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/saved/clients/clients.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controlador/ManejoArchivos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controlador/ManejoArchivos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/models/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/models/Cliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/models/Empresa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/models/Empresa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/models/IEmpresa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/models/IEmpresa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/vista/TestConsola.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/vista/TestConsola.java" afterDir="false" />
+    </list>
+    <list id="7a354bc1-21bf-4fc4-8ca6-cd8cf5863c92" name="Changes by Dell" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/vista/TestConsola.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/vista/TestConsola.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,6 +37,42 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="MIXED" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "jaeverba-javana"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/PilotK300/Proyecto-Final.git",
+    "accountId": "2ebdd733-a975-42c2-9080-3fffe14f50a8"
+  }
+}]]></component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/main/java/com/example/vista/TestConsola.java">
+      <ranges>
+        <range start1="5" end1="5" start2="5" end2="7" changelist="7a354bc1-21bf-4fc4-8ca6-cd8cf5863c92" />
+        <range start1="6" end1="6" start2="8" end2="11" changelist="7a354bc1-21bf-4fc4-8ca6-cd8cf5863c92" />
+        <range start1="9" end1="9" start2="14" end2="16" changelist="71ac968e-c946-4803-9da5-3e8b396802ce" />
+        <range start1="31" end1="32" start2="38" end2="39" changelist="71ac968e-c946-4803-9da5-3e8b396802ce" />
+        <range start1="50" end1="51" start2="57" end2="58" changelist="71ac968e-c946-4803-9da5-3e8b396802ce" />
+        <range start1="60" end1="61" start2="67" end2="68" changelist="71ac968e-c946-4803-9da5-3e8b396802ce" />
+        <range start1="63" end1="65" start2="70" end2="72" changelist="71ac968e-c946-4803-9da5-3e8b396802ce" />
+        <range start1="69" end1="70" start2="76" end2="78" changelist="7a354bc1-21bf-4fc4-8ca6-cd8cf5863c92" />
+        <range start1="73" end1="74" start2="81" end2="82" changelist="71ac968e-c946-4803-9da5-3e8b396802ce" />
+        <range start1="75" end1="79" start2="83" end2="117" changelist="71ac968e-c946-4803-9da5-3e8b396802ce" />
+        <range start1="80" end1="81" start2="118" end2="119" changelist="71ac968e-c946-4803-9da5-3e8b396802ce" />
+        <range start1="82" end1="83" start2="120" end2="121" changelist="71ac968e-c946-4803-9da5-3e8b396802ce" />
+        <range start1="84" end1="85" start2="122" end2="123" changelist="71ac968e-c946-4803-9da5-3e8b396802ce" />
+        <range start1="86" end1="87" start2="124" end2="125" changelist="71ac968e-c946-4803-9da5-3e8b396802ce" />
+        <range start1="88" end1="90" start2="126" end2="126" changelist="71ac968e-c946-4803-9da5-3e8b396802ce" />
+        <range start1="93" end1="93" start2="129" end2="149" changelist="7a354bc1-21bf-4fc4-8ca6-cd8cf5863c92" />
+        <range start1="94" end1="94" start2="150" end2="179" changelist="7a354bc1-21bf-4fc4-8ca6-cd8cf5863c92" />
+        <range start1="95" end1="95" start2="180" end2="187" changelist="7a354bc1-21bf-4fc4-8ca6-cd8cf5863c92" />
+      </ranges>
+    </file>
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8

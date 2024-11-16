@@ -1,0 +1,4 @@
+#CLIENTS
+#NOMBRE TIPOID  IDENTIFICACION  DIRECCION
+juan    cc      1082856752      calle de la gente
+eva     cc      1140878790      La otra calle
