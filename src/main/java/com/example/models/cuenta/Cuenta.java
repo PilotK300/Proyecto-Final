@@ -41,4 +41,5 @@ public abstract class Cuenta {
     public void setLlamadas(List<Llamada> llamadas) {
         Llamadas = llamadas;
     }
+
 }

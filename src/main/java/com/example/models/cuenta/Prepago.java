@@ -28,4 +28,11 @@ public class Prepago extends Cuenta{
     public void setRecargas(List<Recarga> recargas) {
         this.recargas = recargas;
     }
+    public void agregarMinutosPorRecarga(Recarga recarga) {
+        long minutosRecarga = recarga.getValor() / 100;
+        this.numeroMinutos += minutosRecarga;
+
+        System.out.println("Se han agregado " + minutosRecarga + " minutos.");
+        System.out.println("Minutos disponibles: " + this.numeroMinutos);
+    }
 }

@@ -2,8 +2,8 @@ package com.example.models;
 
 import com.example.controlador.utils.OwnFile;
 import com.example.models.cuenta.Cuenta;
+import com.example.models.cuenta.Prepago;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +14,7 @@ public class Cliente {
     private String tipoId;
     private Cuenta cuenta;
 
-    public Cliente(String direccion, String identificacion, String nombre, String tipoid, Cuenta cuenta) {
+    public Cliente(String direccion, String identificacion, String nombre, String tipoid,Cuenta cuenta) {
         this.direccion = direccion;
         this.identificacion = identificacion;
         this.nombre = nombre;
@@ -70,4 +70,6 @@ public class Cliente {
 
         return new ArrayList<Cliente>();
     }
+
+
 }

@@ -7,6 +7,7 @@ import com.example.models.Cliente;
 import com.example.models.Empresa;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -43,7 +44,7 @@ public class ManejoArchivos {
     }
 
     public void loadClients(OwnFile usersFile) {
-        List<Cliente> clients = Cliente.getClientsFromFileURI(usersFile);
+        ArrayList<Cliente> clients = (ArrayList<Cliente>) Cliente.getClientsFromFileURI(usersFile);
 
         if (Objects.isNull(clients)) {
             java.lang.System.err.println("El archivo ingresado no existe");
