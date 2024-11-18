@@ -224,14 +224,14 @@ public class TestConsola {
                         """);
                     int opcion = sc.nextInt();
                     if (opcion == 1) {
-                        System.out.println("Ingresa la fecha de la llamada");
+                        System.out.println("Ingresa la fecha de la llamada ");
                         String fecha=sc.nextLine();
                         LocalDate fecha1=Utils.formatearFecha(fecha,formato);
 
                     } else if (opcion == 2) {
 
                     }else {
-                        System.out.println("Opción no válida");
+                        System.err.println("Opción no válida");
                     }
             }else{
                 System.err.println("Cuenta no encontrada, crea una o vuelve a intentar");
@@ -272,7 +272,9 @@ public class TestConsola {
                 System.out.println("No se encontro el cliente con esa cuenta prepago");
             }
         }
-        public void menuOpcion5() {}
+        public void menuOpcion5() {
+
+        }
 
 
 }
