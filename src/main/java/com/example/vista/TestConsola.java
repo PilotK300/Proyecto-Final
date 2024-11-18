@@ -199,40 +199,54 @@ public class TestConsola {
     public void menuOpcion3(){
         //Primero se pide la cuenta que se tiene en el sistema
         long numeroCuenta;
-        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+        String anio="yyyy";
+        String mes="mm";
+        String dia="dd";
+        String fecha=anio+"-"+mes+"-"+dia;
+        SimpleDateFormat formato = new SimpleDateFormat(fecha);
+
         System.out.println("Selecciona el numero de la cuenta");
         numeroCuenta= sc.nextLong();
         sc.nextLine();
         boolean found = false;
         Cliente foundClient = null;
+        Cuenta foundCuenta = null;
         if(empresa.getCuentas()!=null){
             for (Cliente cliente : empresa.getClientes()) {
                 for(Cuenta cuenta : empresa.getCuentas()){
                     if (numeroCuenta==cuenta.getId()) {
                         found = true;
                         foundClient = cliente;
+                        foundCuenta = cuenta;
                         break;
                     }
                 }
             }
         }
             if(found){
-                System.out.println("""
+                if (foundCuenta instanceof Prepago){
+                    if(((Prepago) foundCuenta).getNumeroMinutos()==0){
+                        System.out.println("La llamada no se puede realizar ");
+                    }else{
+                        System.out.println("""
                         Selecciona que tipo de llamada que quieres realizar
                         \t1.Llamada Nacional
                         \t2.Llamada Internacional
                         """);
-                    int opcion = sc.nextInt();
-                    if (opcion == 1) {
-                        System.out.println("Ingresa la fecha de la llamada ");
-                        String fecha=sc.nextLine();
-                        LocalDate fecha1=Utils.formatearFecha(fecha,formato);
+                        int opcion = sc.nextInt();
+                        if (opcion == 1) {
+                            System.out.println("Ingresa la fecha de la llamada\n");
+                            String fecha1=sc.nextLine();
+                            LocalDate fecha2=Utils.formatearFecha(fecha,formato);
 
-                    } else if (opcion == 2) {
 
-                    }else {
-                        System.err.println("Opción no válida");
+                        } else if (opcion == 2) {
+
+                        }else {
+                            System.err.println("Opción no válida");
+                        }
                     }
+                }
             }else{
                 System.err.println("Cuenta no encontrada, crea una o vuelve a intentar");
             }

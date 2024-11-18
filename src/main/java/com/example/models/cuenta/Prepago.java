@@ -5,7 +5,7 @@ import com.example.models.Recarga;
 import java.util.List;
 
 public class Prepago extends Cuenta{
-    private Long numeroMinutos;
+    private Long numeroMinutos=null;
     private List<Recarga> recargas;
 
     public Prepago(Long id, Long numero, Long numeroMinutos) {

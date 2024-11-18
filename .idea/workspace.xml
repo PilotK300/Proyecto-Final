@@ -6,6 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="71ac968e-c946-4803-9da5-3e8b396802ce" name="Changes" comment="Sesion 3">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/models/Llamada.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/models/Llamada.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/models/cuenta/Prepago.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/models/cuenta/Prepago.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/vista/TestConsola.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/vista/TestConsola.java" afterDir="false" />
     </list>
     <list id="7a354bc1-21bf-4fc4-8ca6-cd8cf5863c92" name="Changes by Dell" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,18 +33,18 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="MIXED" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "PilotK300"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;PilotK300&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/PilotK300/Proyecto-Final.git",
-    "accountId": "031be286-cd37-4da1-8603-782e913d31df"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/PilotK300/Proyecto-Final.git&quot;,
+    &quot;accountId&quot;: &quot;031be286-cd37-4da1-8603-782e913d31df&quot;
   }
-}]]></component>
+}</component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -76,24 +79,6 @@
     <option name="ciType" value="GITHUB" />
     <option name="path" value="$PROJECT_DIR$/.github/workflows/qodana_code_quality.yml" />
   </component>
-  <component name="QodanaCloudProjectLink">
-    <option name="lastReportId" value="REE86" />
-    <option name="linkedProjectId" value="ALxae" />
-    <option name="linkedProjectName" value="My first project" />
-    <option name="organizationId" value="3jGjq" />
-    <option name="userId" value="P2PK7" />
-  </component>
-  <component name="QodanaHighlightedReportService">
-    <option name="cloudReportPersistedInfo">
-      <CloudReportPersistedInfo>
-        <option name="projectId" value="ALxae" />
-        <option name="reportId" value="REE86" />
-      </CloudReportPersistedInfo>
-    </option>
-  </component>
-  <component name="QodanaIsSelectedPersistenceService">
-    <option name="selectedOrLoading" value="true" />
-  </component>
   <component name="RunManager">
     <configuration name="App" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.example.Main" />
@@ -125,6 +110,7 @@
       <workItem from="1731772032091" duration="1814000" />
       <workItem from="1731775017457" duration="20019000" />
       <workItem from="1731872331006" duration="1255000" />
+      <workItem from="1731906566774" duration="7801000" />
     </task>
     <task id="LOCAL-00001" summary="Sesion 3">
       <option name="closed" value="true" />
