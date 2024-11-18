@@ -43,15 +43,7 @@ public class ManejoArchivos {
         return this.system;
     }
 
-    public void loadClients(OwnFile usersFile) {
-        ArrayList<Cliente> clients = (ArrayList<Cliente>) Cliente.getClientsFromFileURI(usersFile);
-
-        if (Objects.isNull(clients)) {
-            java.lang.System.err.println("El archivo ingresado no existe");
-        }
-
-        else {
-            this.system.getEmpresa().setClientes(clients);
-        }
+    public void saveClients(String usersFile) {
+        this.system.getEmpresa().saveClients(usersFile);
     }
 }

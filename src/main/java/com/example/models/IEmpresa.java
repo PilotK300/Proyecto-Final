@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface IEmpresa {
     public List<Cliente> getClientes();
-    public void setClientes(ArrayList<Cliente> clientes);
+    public boolean saveClients(String filename);
     public void addClient(Cliente client);
     public List<Cuenta> getCuentas();
     public void addAccount(Cuenta cuenta, Cliente cliente);

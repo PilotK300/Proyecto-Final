@@ -1,5 +1,6 @@
 package com.example.models;
 
+import com.example.controlador.utils.FileRow;
 import com.example.controlador.utils.OwnFile;
 import com.example.models.cuenta.Cuenta;
 import com.example.models.cuenta.Prepago;
@@ -7,14 +8,14 @@ import com.example.models.cuenta.Prepago;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Cliente {
-    private String direccion;
-    private String identificacion;
-    private String nombre;
-    private String tipoId;
-    private Cuenta cuenta;
+public class Cliente implements FileRow {
+    public String nombre;
+    public String tipoId;
+    public String identificacion;
+    public String direccion;
+    public Cuenta cuenta;
 
-    public Cliente(String direccion, String identificacion, String nombre, String tipoid,Cuenta cuenta) {
+    public Cliente(String nombre, String tipoid, String identificacion, String direccion, Cuenta cuenta) {
         this.direccion = direccion;
         this.identificacion = identificacion;
         this.nombre = nombre;
@@ -60,15 +61,6 @@ public class Cliente {
 
     public void setCuenta(Cuenta cuenta) {
         this.cuenta = cuenta;
-    }
-
-    public static List<Cliente> getClientsFromFileURI(OwnFile usersFile) {
-        // Todo: Create logic for obtaining client list
-        if (!usersFile.getFile().exists()) return null;
-
-        usersFile.getFromFile();
-
-        return new ArrayList<Cliente>();
     }
 
 

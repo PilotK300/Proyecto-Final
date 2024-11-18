@@ -1,7 +1,9 @@
 package com.example.models;
 
+import com.example.controlador.utils.OwnFile;
 import com.example.models.cuenta.Cuenta;
 
+import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,10 +21,15 @@ public class Empresa implements IEmpresa, Serializable {
         return clientes;
     }
 
-    @Override
-    public void setClientes(ArrayList<Cliente> clientes) {
-        this.clientes = clientes;
-    }
+    public boolean saveClients(String filename) {
+        OwnFile<List<Cliente>> clientsFile = new OwnFile<>("saved/clients", filename+".txt");
+
+        if (!clientsFile.getParentFile().exists()) {
+            clientsFile.getParentFile().mkdirs();
+        }
+
+        return clientsFile.formatObjectToFile(this.clientes, "CLIENTS");
+     }
 
 
     public void addClient(Cliente client) {

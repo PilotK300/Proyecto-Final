@@ -4,10 +4,7 @@ import com.example.controlador.ManejoArchivos;
 import com.example.controlador.Utils;
 import com.example.controlador.models.Auth;
 import com.example.controlador.utils.OwnFile;
-import com.example.models.Cliente;
-import com.example.models.Empresa;
-import com.example.models.IEmpresa;
-import com.example.models.Recarga;
+import com.example.models.*;
 import com.example.models.cuenta.Cuenta;
 import com.example.models.cuenta.Postpago;
 import com.example.models.cuenta.Prepago;
@@ -26,6 +23,7 @@ public class TestConsola {
     private ManejoArchivos controller = new ManejoArchivos();
     private IEmpresa empresa;
     private Utils utils;
+
     public Utils getUtils() {
         if (utils == null) {
             if (empresa != null && empresa.getClientes() != null) {
@@ -80,7 +78,7 @@ public class TestConsola {
                  */
             } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
                 System.err.println("La opción ingresada no es correcta");
-            }catch (InputMismatchException e) {
+            } catch (InputMismatchException e) {
                 System.err.println("Error: Debe ingresar un número entero.");
                 sc.nextLine(); // Limpiar el buffer del scanner
             }
@@ -97,11 +95,11 @@ public class TestConsola {
                 \t0. Regresar al menú anterior
                 \t""");
 
-        int opcion = sc.nextInt();
+        int opcion = Integer.parseInt(sc.nextLine());
 
         if (opcion == 1) {
             System.out.print("\tNombre: ");
-            String name = sc.next();
+            String name = sc.nextLine();
 
             System.out.print("\tTipo de documento (CC, TI, Pasaporte): ");
             String type = sc.next();
@@ -122,7 +120,7 @@ public class TestConsola {
                 System.out.print("\tDirección: ");
                 String address = sc.next();
 
-                Cliente cliente = new Cliente(name, type, id, address,null);
+                Cliente cliente = new Cliente(name, type, id, address, null);
 
                 empresa.addClient(cliente);
 
@@ -132,15 +130,13 @@ public class TestConsola {
 
             System.out.print("""
                     
-                    Ingrese el nombre del archivo: """);
+                    \tIngrese el nombre del archivo: """);
 
-            String fileName = sc.nextLine();
+            String fileName = sc.next();
 
-            File clientFile = new File("saved/clients", fileName + ".txt");
+//            empresa.saveClients(fileName);
 
-            OwnFile clientOwnFile = new OwnFile(clientFile);
-
-            controller.loadClients(clientOwnFile);
+            controller.saveClients(fileName);
         }
     }
 
@@ -152,7 +148,9 @@ public class TestConsola {
                 \t2.Postpago
                 """);
         opTypeAccount = sc.nextInt();
-
+        sc.nextLine();
+        System.out.println("Ingresa el id del cliente al que quieres agregar la cuenta");
+        String id=sc.nextLine();
         System.out.print("Ingrese el numero de telefono");
         Long phoneNumber = sc.nextLong();
 
@@ -196,25 +194,27 @@ public class TestConsola {
             System.err.println("No se encontró el cliente");
         }
     }
-    public void menuOpcion3(){
+
+    public void menuOpcion3()
+    {
         //Primero se pide la cuenta que se tiene en el sistema
         long numeroCuenta;
-        String anio="yyyy";
-        String mes="mm";
-        String dia="dd";
-        String fecha=anio+"-"+mes+"-"+dia;
+        String anio = "yyyy";
+        String mes = "mm";
+        String dia = "dd";
+        String fecha = anio + "-" + mes + "-" + dia;
         SimpleDateFormat formato = new SimpleDateFormat(fecha);
 
         System.out.println("Selecciona el numero de la cuenta");
-        numeroCuenta= sc.nextLong();
+        numeroCuenta = sc.nextLong();
         sc.nextLine();
         boolean found = false;
         Cliente foundClient = null;
         Cuenta foundCuenta = null;
-        if(empresa.getCuentas()!=null){
+        if (empresa.getCuentas() != null) {
             for (Cliente cliente : empresa.getClientes()) {
-                for(Cuenta cuenta : empresa.getCuentas()){
-                    if (numeroCuenta==cuenta.getId()) {
+                for (Cuenta cuenta : empresa.getCuentas()) {
+                    if (numeroCuenta == cuenta.getId()) {
                         found = true;
                         foundClient = cliente;
                         foundCuenta = cuenta;
@@ -223,72 +223,147 @@ public class TestConsola {
                 }
             }
         }
-            if(found){
-                if (foundCuenta instanceof Prepago){
-                    if(((Prepago) foundCuenta).getNumeroMinutos()==0){
-                        System.out.println("La llamada no se puede realizar ");
-                    }else{
-                        System.out.println("""
-                        Selecciona que tipo de llamada que quieres realizar
-                        \t1.Llamada Nacional
-                        \t2.Llamada Internacional
-                        """);
-                        int opcion = sc.nextInt();
-                        if (opcion == 1) {
-                            System.out.println("Ingresa la fecha de la llamada\n");
-                            String fecha1=sc.nextLine();
-                            LocalDate fecha2=Utils.formatearFecha(fecha,formato);
+        if (found) {
+            if (foundCuenta instanceof Prepago) {
+                if (((Prepago) foundCuenta).getNumeroMinutos() == 0) {
+                    System.out.println("La llamada no se puede realizar ");
+                } else {
+                    System.out.println("""
+                            Selecciona que tipo de llamada que quieres realizar
+                            \t1.Llamada Nacional
+                            \t2.Llamada Internacional
+                            """);
+                    int opcion = sc.nextInt();
+                    if (opcion == 1) {
+                        System.out.println("Ingresa la fecha de la llamada\n");
+                        String fecha1 = sc.nextLine();
+                        LocalDate fecha2 = Utils.formatearFecha(fecha, formato);
+                        System.out.println("Ingresa la duración de la llamada\n");
+                        long duracion=sc.nextLong();
+                        if(duracion>((Prepago)foundCuenta).getNumeroMinutos()){
+                            System.out.println("No se puede realizar la llamada, la duración es mayor al numero de minutos que se posee");
+                        }else{
+                            System.out.println("Ingresa el telefono destinatario\n");
+                            long telefonoDestinatario= sc.nextLong();
+                            LlamadaNacional nuevaLlamadaNacional = new LlamadaNacional(duracion,fecha2,telefonoDestinatario,0L);
+                            long valor=nuevaLlamadaNacional.calcularValor(foundCuenta);
+                            nuevaLlamadaNacional.setValor(valor);
+                            System.out.println("Llamada Nacional {" +
+                                    "Duración=" + nuevaLlamadaNacional.getDuracion() + " minutos, " +
+                                    "Fecha=" + nuevaLlamadaNacional.getFecha() + ", " +
+                                    "Teléfono Destinatario=" + nuevaLlamadaNacional.getTelefonoDestinatario() + ", " +
+                                    "Valor=" + nuevaLlamadaNacional.getValor() + "}");
+                        }
 
-
-                        } else if (opcion == 2) {
-
+                    } else if (opcion == 2) {
+                        System.out.println("Ingresa la fecha de la llamada\n");
+                        String fecha1 = sc.nextLine();
+                        LocalDate fecha2 = Utils.formatearFecha(fecha, formato);
+                        System.out.println("Ingresa la duración de la llamada\n");
+                        long duracion=sc.nextLong();
+                        if(duracion>((Prepago)foundCuenta).getNumeroMinutos()){
+                            System.out.println("No se puede realizar la llamada, la duración es mayor al numero de minutos que se posee");
                         }else {
-                            System.err.println("Opción no válida");
+                            System.out.println("Ingresa el pais al que va destinada la llamada");
+                            String paisDestino=sc.nextLine();
+                            System.out.println("Ingresa el telefono destinatario\n");
+                            long telefonoDestinatario = sc.nextLong();
+                            LlamadaInterncaional nuevaLlamadaInternacional= new LlamadaInterncaional(duracion,null,telefonoDestinatario,0L,paisDestino);
+                            long concat= nuevaLlamadaInternacional.verElPais(paisDestino);
+                            long valor= nuevaLlamadaInternacional.calcularValor(foundCuenta);
+                            nuevaLlamadaInternacional.setValor(valor);
+                            System.out.println("Llamada Internacional {" +
+                                    "Duración=" + nuevaLlamadaInternacional.getDuracion() + " minutos, " +
+                                    "Fecha=" + concat+"-"+nuevaLlamadaInternacional.getFecha() + ", " +
+                                    "Teléfono Destinatario=" + nuevaLlamadaInternacional.getTelefonoDestinatario() + ", " +
+                                    "Valor=" + nuevaLlamadaInternacional.getValor() + "}");
                         }
-                    }
-                }
-            }else{
-                System.err.println("Cuenta no encontrada, crea una o vuelve a intentar");
-            }
-        }
-        public void menuOpcion4() {
-            DateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-            System.out.println("Ingresa el id de la cuenta pre-pago");
-            String id=sc.nextLine();
-            Prepago cuentaPrepago = null;
-            boolean found = false;
-            Cliente foundClient = null;
-            for (Cliente cliente : empresa.getClientes()) {
-                for (Cuenta cuenta : empresa.getCuentas()) {
-                    if (cuenta instanceof Prepago) {
-                        if (cliente.getIdentificacion().equals(id)) {
-                            found = true;
-                            cuentaPrepago = (Prepago) cuenta;
-                            break;
-                        }
-                    }
-                }
-            }
-            if (found ) {
-                System.out.println("""
-                        \tEl valor del minuto es de 100 pesos
-                        \tIntroduce la fecha de la recarga
-                        """);
-                String fecha=sc.nextLine();
-                LocalDate fecha2=Utils.formatearFecha(fecha,formato);
-                System.out.println("Ingresa el valor de la recarga");
-                int valor=sc.nextInt();
-                Recarga nuevaRecarga=new Recarga(fecha2,valor);
-                cuentaPrepago.agregarMinutosPorRecarga(nuevaRecarga);
-                System.out.println("La recarga fue agregada con éxito");
-            }
-            else {
-                System.out.println("No se encontro el cliente con esa cuenta prepago");
-            }
-        }
-        public void menuOpcion5() {
 
+                    }  else {
+                        System.err.println("Opción no válida");
+                    }
+                }
+            } else if (foundCuenta instanceof Postpago) {
+                System.out.println("""
+                            Selecciona que tipo de llamada que quieres realizar
+                            \t1.Llamada Nacional
+                            \t2.Llamada Internacional
+                            """);
+                int opcion = sc.nextInt();
+                if (opcion == 1) {
+                    System.out.println("Ingresa la fecha de la llamada\n");
+                    String fecha1 = sc.nextLine();
+                    LocalDate fecha2 = Utils.formatearFecha(fecha, formato);
+                    System.out.println("Ingresa la duración de la llamada\n");
+                    long duracion=sc.nextLong();
+                    System.out.println("Ingresa el telefono destinatario\n");
+                    long telefonoDestinatario= sc.nextLong();
+                    LlamadaNacional nuevaLlamadaNacional = new LlamadaNacional(duracion,fecha2,telefonoDestinatario,0L);
+                    long valor=nuevaLlamadaNacional.calcularValor(foundCuenta);
+                    nuevaLlamadaNacional.setValor(valor);
+                    System.out.println("Llamada Nacional {" +
+                            "Duración=" + nuevaLlamadaNacional.getDuracion() + " minutos, " +
+                            "Fecha=" + nuevaLlamadaNacional.getFecha() + ", " +
+                            "Teléfono Destinatario=" + nuevaLlamadaNacional.getTelefonoDestinatario() + ", " +
+                            "Valor=" + nuevaLlamadaNacional.getValor() + "}");
+                } else if (opcion==2) {
+                    System.out.println("Ingresa la fecha de la llamada\n");
+                    String fecha1 = sc.nextLine();
+                    LocalDate fecha2 = Utils.formatearFecha(fecha, formato);
+                    System.out.println("Ingresa la duración de la llamada\n");
+                    long duracion=sc.nextLong();
+                }
+
+
+            }
+        } else {
+            System.err.println("Cuenta no encontrada, crea una o vuelve a intentar");
         }
+    }
+
+    public void menuOpcion4() {
+        DateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+        System.out.println("Ingresa el id de la cuenta pre-pago");
+        String id = sc.nextLine();
+        Prepago cuentaPrepago = null;
+        boolean found = false;
+        Cliente foundClient = null;
+        for (Cliente cliente : empresa.getClientes()) {
+            for (Cuenta cuenta : empresa.getCuentas()) {
+                if (cuenta instanceof Prepago) {
+                    if (cliente.getIdentificacion().equals(id)) {
+                        found = true;
+                        cuentaPrepago = (Prepago) cuenta;
+                        break;
+                    }
+                }
+            }
+        }
+        if (found) {
+            System.out.println("""
+                    \tEl valor del minuto es de 100 pesos
+                    \tIntroduce la fecha de la recarga
+                    """);
+            String fecha = sc.nextLine();
+            LocalDate fecha2 = Utils.formatearFecha(fecha, formato);
+            System.out.println("Ingresa el valor de la recarga");
+            int valor = sc.nextInt();
+            Recarga nuevaRecarga = new Recarga(fecha2, valor);
+            cuentaPrepago.agregarMinutosPorRecarga(nuevaRecarga);
+            System.out.println("La recarga fue agregada con éxito");
+        } else {
+            System.out.println("No se encontro el cliente con esa cuenta prepago");
+        }
+    }
+
+    public void menuOpcion5() {
+
+    }
+    public void menuOpcion6(){
+        System.out.println("Ingrese el año");
+        int anio=sc.nextInt();
+        System.out.println("Ingrese el mes");
+    }
 
 
 }

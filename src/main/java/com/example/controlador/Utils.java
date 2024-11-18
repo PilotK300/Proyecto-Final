@@ -27,5 +27,15 @@ public class Utils {
             return null;
         }
     }
+
+    public static String capitalizeFirst(String str) {
+        if (str == null || str.isEmpty()) {
+            return str;
+        }
+        return str.substring(0, 1).toUpperCase() + str.substring(1);
+    }
+    public static String convertLongToString(long number) {
+        return Long.toString(number);
+    }
 }
 

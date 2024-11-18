@@ -1,0 +1,3 @@
+#CLIENTS
+#Nombre   Tipoid   Identificacion   Direccion   Cuenta   
+ javier   cc       1234             dir         <null>   
